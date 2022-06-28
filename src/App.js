@@ -3,11 +3,10 @@ import './App.css';
 import { Box } from '@mui/material';
 import { styled } from '@mui/system'
 import FretBoard from './components/FretBoard'
-import FretLabels from './components/FretLabels'
 
 const Settings = styled('div')({
   height: '25vh',
-  width: '70vw',
+  width: '80vw',
   border: '2px solid #3b1a59',
   padding: 10,
   margin: 'auto',
@@ -24,11 +23,7 @@ const Setting = styled('div')({
 
 const App = () => {
   const tuning = ['E', 'B', 'G', 'D', 'A', 'E'];
-  const numFrets = 13;
-  let fretNumbers = [];
-  for (let i = 0; i < numFrets; i++) {
-    fretNumbers.push(i.toString());
-  }
+  const numFrets = 12;
   return (
     <Box sx={{ height: '100%', width: '100vw', backgroundColor: '#10112b', textAlign: 'center' }}>
       <Settings>
@@ -43,7 +38,7 @@ const App = () => {
           <h4>(1,2,3,5,7,8)</h4>
         </Box>
       </div>
-      <FretLabels labels={fretNumbers} />
+
       <FretBoard tuning={tuning} numFrets={numFrets} numStrings={6} />
     </Box>
   );

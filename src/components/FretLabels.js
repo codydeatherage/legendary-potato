@@ -2,26 +2,43 @@ import React from 'react';
 import { styled } from '@mui/system';
 
 const Row = styled('div')({
-    width: '70vw',
+    width: '80vw',
     margin: 'auto',
     display: 'flex',
+    minWidth: '550px',
 
 })
 
 const Label = styled('div')({
-    flex: 1,
-    width: 'max-content',
-    height: '30px',
-    color: 'gray',
-    zIndex: 99,
-    padding: '2px',
+    // color: 'white',
+    
+    // textAlign: 'center',
+    // zIndex: 99,
+
+    borderRadius: '40px',
+    height: '25px',
+    width: '100%',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    margin: 'auto'
 })
 
-const FretLabels = ({labels}) => {
+const LabelContainer = styled('div')({
+    flex: 1,
+    height: '30px',
+    borderLeft: '2px solid green',
+    borderRight: '2px solid green',
+    zIndex: 99,
+    
+})
+
+const FretLabels = ({ labels }) => {
     return (
         <Row>
-            {labels.map((label, index) => 
-                <Label>{index}</Label>
+            {labels.map((label, index) =>
+                <LabelContainer>
+                    <Label>{index}</Label>
+                </LabelContainer>
             )}
         </Row>
     )

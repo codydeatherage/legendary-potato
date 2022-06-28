@@ -1,8 +1,6 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
-import { styled, createTheme, ThemeProvider } from '@mui/system';
 import String from './String';
-
 const FretBoard = ({ numStrings, numFrets, tuning }) => {
     const noteSequence = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
     let frets = [];
@@ -22,25 +20,25 @@ const FretBoard = ({ numStrings, numFrets, tuning }) => {
     }
     console.log(frets);
 
+
     let fretNumbers = [];
-    for(let i = 0; i < numFrets;i++){
+    for (let i = 0; i <= numFrets; i++) {
         fretNumbers.push(i.toString());
     }
-
+    console.log(fretNumbers);
     return (
-        <Box sx={{ width: '70vw', margin: 'auto', border: '2px solid #3b1a59', borderRadius: 4 }}>
-         {/*    <String notes={fretNumbers}/> */}
-            <div sx={{ width: '100%', border: '2px solid #3b1a59', borderRadius: 4 }}>
-                <String notes={frets[0]}/>
-                <String notes={frets[1]}/>
-                <String notes={frets[2]}/>
-                <String notes={frets[3]}/>
-                <String notes={frets[4]}/>
-                <String notes={frets[5]}/>
+        <Box sx={{ width: '80vw', minWidth: '550px', margin: 'auto', /* border: '2px solid #3b1a59', */ borderRadius: 4 }}>
+
+            <div sx={{ width: '100%', /* border: '2px solid #3b1a59', */ borderRadius: 4 }}>
+                <String notes={fretNumbers} label />
+                <String notes={frets[0]} />
+                <String notes={frets[1]} />
+                <String notes={frets[2]} />
+                <String notes={frets[3]} />
+                <String notes={frets[4]} />
+                <String notes={frets[5]} />
             </div>
         </Box>
-
-
     )
 }
 

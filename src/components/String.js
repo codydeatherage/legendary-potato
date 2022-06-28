@@ -8,16 +8,15 @@ const Row = styled('div')({
 
 })
 
-const Fret = styled('div')({
+const Fret = styled('div')(({ label }) => ({
     flex: 1,
-    width: 'max-content',
     height: '30px',
-    color: 'red',
+    color: label ? 'white' : 'red',
     borderLeft: '2px solid green',
     borderRight: '2px solid green',
     zIndex: 99,
     padding: '2px',
-})
+}))
 
 const ThinString = styled('div')({
     position: 'absolute',
@@ -28,24 +27,23 @@ const ThinString = styled('div')({
     zIndex: 0,
 })
 
-const Note = styled('div')({
+const Note = styled('div')(({ label }) => ({
     borderRadius: '40px',
-    width: '25px',
+    width: label ? '100%' : '25px',
     height: '25px',
-    backgroundColor: 'orange',
+    backgroundColor: label ? 'gray' : 'orange',
     textAlign: 'center',
     margin: 'auto'
-})
+}))
 
-const String = ({ notes }) => {
+const String = ({ notes, label }) => {
     console.log(notes)
     return (
         <Row>
-            <ThinString />
+            {!label && <ThinString />}
             {notes.map((note) =>
-                <Fret>
-                    <Note> {note}</Note>
-
+                <Fret label={label}>
+                    <Note label={label}> {note}</Note>
                 </Fret>
             )}
         </Row>
