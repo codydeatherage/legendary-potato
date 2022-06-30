@@ -12,8 +12,8 @@ const Fret = styled('div')(({ label }) => ({
     flex: 1,
     height: '30px',
     color: label ? 'white' : 'red',
-    borderLeft: '2px solid green',
-    borderRight: '2px solid green',
+    borderLeft: label ? 'none' : '2px solid green',
+    borderRight: label ? 'none' : '2px solid green',
     zIndex: 99,
     padding: '2px',
 }))
@@ -33,17 +33,20 @@ const Note = styled('div')(({ label }) => ({
     height: '25px',
     backgroundColor: label ? 'gray' : 'orange',
     textAlign: 'center',
-    margin: 'auto'
+    margin: 'auto',
+    '&:hover':{
+        backgroundColor:'yellow',
+        color: 'black'
+    }
 }))
 
 const String = ({ notes, label }) => {
-    console.log(notes)
     return (
         <Row>
             {!label && <ThinString />}
             {notes.map((note) =>
                 <Fret label={label}>
-                    <Note label={label}> {note}</Note>
+                    {note !== '' && <Note label={label}> {note}</Note>}
                 </Fret>
             )}
         </Row>
