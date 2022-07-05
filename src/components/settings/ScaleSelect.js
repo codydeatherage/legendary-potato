@@ -1,38 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { styled } from '@mui/system'
-import { Box, TextField, MenuItem, Autocomplete, Select, Input } from '@mui/material'
+import { TextField, Autocomplete } from '@mui/material'
 
 const Container = styled('div')({
     width: '100%',
-
     height: 'auto',
     display: 'flex',
     '& div': {
         borderColor: 'red',
         backgroundColor: '#372e57',
         color: 'white',
-        // '&:hover':{
-        //     backgroundColor: '#472e57'
-        // },
     },
     '& #scale-combo-box': {
         color: 'white',
         backgroundColor: '#372e57',
         width: '150px',
     },
-
     '#scale-combo-box-label': {
         color: 'white'
     }
 })
 
-const ScaleSelect = ({ activeScale, setActiveScale }) => {
-    const [scale, setScale] = useState('');
-    const scales = ['Major', 'Minor'];
+const ScaleSelect = ({ scales, setActiveScale }) => {
 
     const handleChange = (event, data) => {
-        console.log(data);
-        setActiveScale(data);
+        setActiveScale(scales[data]);
     };
 
     return (
@@ -41,7 +33,7 @@ const ScaleSelect = ({ activeScale, setActiveScale }) => {
                 disablePortal
                 disableClearable
                 id='scale-combo-box'
-                options={scales}
+                options={Object.keys(scales)}
                 onChange={handleChange}
                 sx={{ backgroundColor: '#372e57', color: 'white' }}
                 renderInput={(params) =>
@@ -55,21 +47,8 @@ const ScaleSelect = ({ activeScale, setActiveScale }) => {
                         }}
                     />
                 }
-
-
             />
-            {/* <TextField
-                id='scale-select'
-                defaultValue={scale}
-                label='scale'
-                select
-                onChange={handleChange}
-            >
-                <MenuItem val={'major'}>Major</MenuItem>
-                <MenuItem val={'minor'}>Minor</MenuItem>
-            </TextField> */}
         </Container>
-
     )
 }
 

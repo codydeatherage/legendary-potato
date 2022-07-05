@@ -19,7 +19,7 @@ const Setting = styled('div')({
     height: '25%',
 })
 
-const Settings = ({ setActiveRoot, root, activeScale, setActiveScale }) => {
+const Settings = ({ setActiveRoot, root, activeScale, setActiveScale, scales }) => {
     return (
         <Container>
             <Setting>
@@ -27,6 +27,7 @@ const Settings = ({ setActiveRoot, root, activeScale, setActiveScale }) => {
             </Setting>
             <Setting sx={{ marginTop: 2 }}>
                 <ScaleSelect
+                    scales={scales}
                     activeScale={activeScale}
                     setActiveScale={setActiveScale}
                 />
