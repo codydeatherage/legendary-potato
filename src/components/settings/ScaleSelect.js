@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/system'
-import { Box, ToggleButtonGroup, ToggleButton } from '@mui/material'
+import { ToggleButtonGroup, ToggleButton } from '@mui/material'
 import DropDown from './DropDown'
 
 const Container = styled('div')({
@@ -8,15 +8,17 @@ const Container = styled('div')({
     height: 'auto',
     display: 'flex',
     alignItems: 'center',
+    /*   margin: 'auto', */
     '& #toggle': {
         '& button': {
             color: 'white',
             width: '60px',
             fontSize: '20px',
-            border: '1px solid black',
+            border: '1px solid #fcbf49',
         },
-        '& .Mui-selected':{
-            backgroundColor: '#372e57'
+        '& .Mui-selected': {
+            backgroundColor: '#fcbf49',
+            color: 'black'
         }
     },
     '& p': {
@@ -48,12 +50,11 @@ const ScaleSelect = ({ scales, setActiveScale, accidental, setAccidental }) => {
                 exclusive
                 value={accidental}
                 onChange={(e) => handleToggle(e)}
-                sx={{/*   */ color: 'white' }}
+                sx={{ color: 'white' }}
             >
                 <ToggleButton value='sharp'>{'♯'}</ToggleButton>
                 <ToggleButton value='flat'>{'♭'}</ToggleButton>
             </ToggleButtonGroup>
-
         </Container>
     )
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box } from '@mui/material';
-import String from './String';
+import React from 'react'
+import { Box } from '@mui/material'
+import String from './String'
 
 const FretBoard = ({ numStrings, numFrets, tuning, root, scale }) => {
     const noteSequence = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];

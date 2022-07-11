@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@mui/system'
 import { ButtonGroup, Button } from '@mui/material'
+
 const Container = styled('div')({
     width: 'fit-content',
     margin: 'auto',
@@ -11,15 +12,15 @@ const Container = styled('div')({
 })
 
 const Note = styled(Button)(({ active }) => ({
-    width: active ? '60px' : '50px',
-    borderRadius: '100%',
-    height: active ? '60px' : '50px',
-    backgroundColor: active ? '#2d6939' : '#6242c9',
-    marginLeft: 10 ,
+    width: 60,
+    height: 60,
+    backgroundColor: active && '#fcbf49',
+    marginLeft: 10,
     textAlign: 'center',
-    lineHeight: active ? '60px' : '50px',
     fontWeight: 'bold',
-    fontSize: active ? '30px' : '20px',
+    fontSize: 20,
+    color: active ? 'black' : '#5c5f63',
+    borderColor: '#fcbf49',
     '&:hover': {
         backgroundColor: 'white',
         color: 'black'
@@ -31,32 +32,20 @@ const RootSelect = ({ root, setActiveRoot }) => {
     return (
         <Container>
             <p>Root</p>
-{/*             <ButtonGroup variant="outlined">
-            {noteSequence.map((note, index) =>
-                note === root ?
-                    <Note
-                        active='true'
-                        key={note + index}>{note}
-                    </Note>
-                    :
-                    <Note
-                        onClick={() => { setActiveRoot(note) }}
-                        key={note + index}>{note}
-                    </Note>
-            )}
-            </ButtonGroup> */}
-            {noteSequence.map((note, index) =>
-                note === root ?
-                    <Note
-                        active='true'
-                        key={note + index}>{note}
-                    </Note>
-                    :
-                    <Note
-                        onClick={() => { setActiveRoot(note) }}
-                        key={note + index}>{note}
-                    </Note>
-            )}
+            <ButtonGroup variant="outlined">
+                {noteSequence.map((note, index) =>
+                    note === root ?
+                        <Note
+                            active='true'
+                            key={note + index}>{note}
+                        </Note>
+                        :
+                        <Note
+                            onClick={() => { setActiveRoot(note) }}
+                            key={note + index}>{note}
+                        </Note>
+                )}
+            </ButtonGroup>
         </Container>
     )
 }

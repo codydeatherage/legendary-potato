@@ -22,4 +22,4 @@ const TuningSelect = () =>{
     )
 }
 
-export default TuningSelect;
+export default TuningSelect

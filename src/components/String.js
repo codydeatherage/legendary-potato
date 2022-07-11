@@ -38,28 +38,25 @@ const Note = styled('div')(({ label, root, active }) => ({
     margin: 'auto',
     color: root ? 'black' : active || label ? 'white' : '#5c5f63',
     '&:hover': {
-        backgroundColor: '#F77F00',
+        backgroundColor: '#fcbf49',
         width: label ? '100%' : '30px',
         height: '30px',
-        color: root ? 'white' : active || label ? 'black' : 'gray'
+        color: active || label ? 'black' : 'gray'
     }
 }))
 
-const String = ({ notes, label, index, root, scale }) => {
-    return (
-        <Row>
-            {!label && <StringDecoration sm={index <= 2} />}
-            {notes.map((note) =>
-                <Fret label={label}>
-                    {scale && scale.includes(note) ?
-                        <Note label={label} root={note === root} active='true'>{note}</Note>
-                        :
-                        <Note label={label}>{note}</Note>
-                    }
-                </Fret>
-            )}
-        </Row>
-    )
-}
+const String = ({ notes, label, index, root, scale }) =>
+    <Row>
+        {!label && <StringDecoration sm={index <= 2} />}
+        {notes.map((note) =>
+            <Fret label={label}>
+                {scale && scale.includes(note) ?
+                    <Note label={label} root={note === root} active='true'>{note}</Note>
+                    :
+                    <Note label={label}>{note}</Note>
+                }
+            </Fret>
+        )}
+    </Row>
 
 export default String

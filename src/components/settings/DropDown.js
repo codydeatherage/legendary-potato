@@ -7,44 +7,42 @@ const Container = styled('div')({
     height: 'auto',
     display: 'flex',
     '& div': {
-        backgroundColor: '#372e57',
-        color: 'white',
+        backgroundColor: '#fcbf49',
+        color: 'black',
+        fontWeight: 'bold',
     },
     '& #combo-box': {
-        color: 'white',
-        backgroundColor: '#372e57',
+        color: 'black',
+        fontWeight: 'bold',
         width: '150px',
     },
     '#combo-box-label': {
-        color: 'white'
-    }
+        color: 'black',
+        fontWeight: 'bold',
+    },
 })
 
-const DropDown = ({options, handleChange}) =>{ 
-   
-        return (
-            <Container>
-                <Autocomplete
-                    disablePortal
-                    disableClearable
-                    id='combo-box'
-                    options={options}
-                    onChange={(event, data) => handleChange(event, data)}
-                    sx={{ backgroundColor: '#372e57', color: 'white' }}
-                    renderInput={(params) =>
-                        <TextField
-                            id='option'
-                            {...params}
-                            label='Scale'
-                            InputLabelProps={{ className: "autocompleteLabel" }}
-                            InputProps={{
-                                ...params.InputProps,
-                            }}
-                        />
-                    }
+const DropDown = ({ options, handleChange }) =>
+    <Container>
+        <Autocomplete
+            disablePortal
+            disableClearable
+            id='combo-box'
+            options={options}
+            onChange={(event, data) => handleChange(event, data)}
+            sx={{ backgroundColor: '#372e57', color: 'white' }}
+            renderInput={(params) =>
+                <TextField
+                    id='option'
+                    {...params}
+                    label='Scale'
+                    InputLabelProps={{ className: "autocompleteLabel" }}
+                    InputProps={{
+                        ...params.InputProps,
+                    }}
                 />
-            </Container>
-        )
-    }
-    
-    export default DropDown
+            }
+        />
+    </Container>
+
+export default DropDown
