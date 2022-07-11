@@ -1,53 +1,59 @@
 import React from 'react'
 import { styled } from '@mui/system'
-import { TextField, Autocomplete } from '@mui/material'
+import { Box, ToggleButtonGroup, ToggleButton } from '@mui/material'
+import DropDown from './DropDown'
 
 const Container = styled('div')({
-    width: '100%',
+    width: 'fit-content',
     height: 'auto',
     display: 'flex',
-    '& div': {
-        borderColor: 'red',
-        backgroundColor: '#372e57',
-        color: 'white',
+    alignItems: 'center',
+    '& #toggle': {
+        '& button': {
+            color: 'white',
+            width: '60px',
+            fontSize: '20px',
+            border: '1px solid black',
+        },
+        '& .Mui-selected':{
+            backgroundColor: '#372e57'
+        }
     },
-    '& #scale-combo-box': {
-        color: 'white',
-        backgroundColor: '#372e57',
-        width: '150px',
-    },
-    '#scale-combo-box-label': {
-        color: 'white'
+    '& p': {
+        margin: 'auto 10px'
     }
 })
 
-const ScaleSelect = ({ scales, setActiveScale }) => {
+const ScaleSelect = ({ scales, setActiveScale, accidental, setAccidental }) => {
 
     const handleChange = (event, data) => {
         setActiveScale(scales[data]);
-    };
+    }
+
+    const handleToggle = (event) => {
+        if (event.target.value !== accidental) {
+            setAccidental(event.target.value)
+        }
+    }
 
     return (
         <Container>
-            <Autocomplete
-                disablePortal
-                disableClearable
-                id='scale-combo-box'
+            <DropDown
                 options={Object.keys(scales)}
-                onChange={handleChange}
-                sx={{ backgroundColor: '#372e57', color: 'white' }}
-                renderInput={(params) =>
-                    <TextField
-                        id='option'
-                        {...params}
-                        label='Scale'
-                        InputLabelProps={{ className: "autocompleteLabel" }}
-                        InputProps={{
-                            ...params.InputProps,
-                        }}
-                    />
-                }
+                handleChange={handleChange}
             />
+            <p>Accidental</p>
+            <ToggleButtonGroup
+                id='toggle'
+                exclusive
+                value={accidental}
+                onChange={(e) => handleToggle(e)}
+                sx={{/*   */ color: 'white' }}
+            >
+                <ToggleButton value='sharp'>{'♯'}</ToggleButton>
+                <ToggleButton value='flat'>{'♭'}</ToggleButton>
+            </ToggleButtonGroup>
+
         </Container>
     )
 }

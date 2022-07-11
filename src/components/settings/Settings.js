@@ -2,24 +2,30 @@ import React from 'react'
 import { styled } from '@mui/system'
 import RootSelect from './RootSelect'
 import ScaleSelect from './ScaleSelect'
+import TuningSelect from './TuningSelect'
 
 const Container = styled('div')({
     height: '25vh',
-    width: '80vw',
-    border: '2px solid #3b1a59',
+    width: 'fit-content',
     padding: 10,
     margin: 'auto',
-    borderRadius: 4,
+    borderRadius: '0 0 10px 10px',
+    textAlign: 'center',
+    backgroundColor: '#003c5c'
 })
 
 const Setting = styled('div')({
     width: '100%',
-    textAlign: 'left',
     color: 'white',
     height: '25%',
+    minHeight: '50px',
+    
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyItems: 'center'
 })
 
-const Settings = ({ setActiveRoot, root, activeScale, setActiveScale, scales }) => {
+const Settings = ({ setActiveRoot, root, activeScale, setActiveScale, scales, accidental, setAccidental }) => {
     return (
         <Container>
             <Setting>
@@ -28,12 +34,15 @@ const Settings = ({ setActiveRoot, root, activeScale, setActiveScale, scales }) 
             <Setting sx={{ marginTop: 2 }}>
                 <ScaleSelect
                     scales={scales}
+                    accidental={accidental}
+                    setAccidental={setAccidental}
                     activeScale={activeScale}
                     setActiveScale={setActiveScale}
                 />
             </Setting>
-            {/*             <Setting>Scale</Setting>
-            <Setting>Tuning</Setting> */}
+            <Setting>
+                <TuningSelect/>
+            </Setting>
         </Container>
     )
 }

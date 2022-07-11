@@ -21,18 +21,7 @@ const FretBoard = ({ numStrings, numFrets, tuning, root, scale }) => {
         let notesOnString = [];
         seqIndex = noteSequence.indexOf(tuning[i]);
         for (let j = 0; j < numFrets + 1; j++) {
-            if (scale) {
-                if (notesInScale.includes(noteSequence[seqIndex])) {
-                    notesOnString.push(noteSequence[seqIndex]);
-                }
-                else {
-                    notesOnString.push('');
-                }
-            }
-            else {
-                notesOnString.push(noteSequence[seqIndex]);
-
-            }
+            notesOnString.push(noteSequence[seqIndex]);
             seqIndex++;
             if (seqIndex === noteSequence.length) {
                 seqIndex = 0;
@@ -49,10 +38,10 @@ const FretBoard = ({ numStrings, numFrets, tuning, root, scale }) => {
     return (
         <Box sx={{ width: '80vw', minWidth: '550px', margin: 'auto', borderRadius: 4 }}>
             <Box sx={{ width: '100%', borderRadius: 4 }}>
-                <String notes={fretNumbers} label />
+                <String notes={fretNumbers} label='true' />
                 {
                     frets.map((notes, index) =>
-                        <String notes={notes} key={notes[0] + index} index={index}/>
+                        <String notes={notes} scale={notesInScale} key={notes[0] + index} root={root} index={index} />
                     )
                 }
             </Box>
